@@ -65,7 +65,7 @@
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
+                    <span class="author-block">Iowa State University<br>Conferance name and year</span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
                   </div>
 
@@ -83,7 +83,7 @@
                     </span>
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -91,11 +91,11 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -127,14 +127,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <img src="static/images/ag_question_categories_fixed2.svg" alt="Banner SVG" style="width: 100%; height: auto;">
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+        A conceptual overview of categorized agricultural question types.      </h2>
     </div>
   </div>
 </section>
@@ -148,7 +143,34 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+
+
+            <section class="section">
+              <div class="container is-max-desktop">
+                <h2 class="title is-4">Overview</h2>
+                <p>
+                  The agricultural domain presents unique challenges for question-answering systems due to its specialized terminology, context-dependent decisions, and reliance on localized knowledge. While large language models (LLMs) excel at general reasoning tasks, their ability to handle domain-specific agricultural reasoning has not been sufficiently explored.
+                </p>
+                <p>
+                  This work bridges that gap by introducing a dedicated dataset and a comprehensive benchmarking strategy tailored to agronomic reasoning tasks. Our key contributions include:
+                </p>
+                <ul>
+                  <li>
+                    A curated collection of <strong>55,000 agronomy-focused QA pairs</strong> enriched with reasoning traces, developed via an expert-in-the-loop pipeline to ensure relevance, quality, and clarity.
+                  </li>
+                  <li>
+                    A <strong>novel evaluation framework</strong> that assesses reasoning capabilities across models, distinguishing between reasoning and non-reasoning LLMs.
+                  </li>
+                  <li>
+                    A <strong>distilled lightweight model</strong> trained on the dataset, offering performance comparable to larger models while remaining efficient and scalable.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+
+
+
           </p>
         </div>
       </div>

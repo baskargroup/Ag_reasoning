@@ -1,4 +1,4 @@
-# Academic Project Page Template
+<!-- # Academic Project Page Template
 This is an academic paper project page template.
 
 
@@ -50,4 +50,20 @@ To edit the websites contents edit the `index.html` file. It contains different 
 Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
 
 ## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. -->
+
+
+
+
+# AgReasoning Benchmark
+
+**"AgReasoning Benchmark"**, which introduces a large-scale question-answering (QA) benchmark tailored to the agricultural domain.
+
+## 📄 Paper Summary
+
+- **Goal**: Benchmark LLMs and reasoning models on domain-specific agronomic QA tasks.
+- **Dataset**: 55K expert-in-the-loop QA pairs covering diverse agricultural question categories.
+- **Key Contributions**:
+  - A multi-stage flowchart-driven pipeline for dataset curation.
+  - Evaluation framework using LLM-as-a-Judge.
+  - A distilled model that matches larger models in performance with higher efficiency.
