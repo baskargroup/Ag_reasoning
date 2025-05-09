@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags -->
+  <!-- Meta tags for social media banners, keywords, viewport -->
   <meta name="description" content="DESCRIPTION META TAG">
   <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
   <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG"/>
@@ -10,7 +10,6 @@
   <meta property="og:image" content="static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
-
   <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
   <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
   <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
@@ -22,27 +21,75 @@
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <!-- Bulma & FontAwesome -->
+  <!-- Bulma & related CSS -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <!-- DataTables Bulma CSS -->
+  <!-- DataTables Bulma integration CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
 
-  <!-- jQuery & DataTables JS -->
+  <!-- jQuery & other scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <!-- DataTables core & Bulma JS -->
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" defer></script>
   <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js" defer></script>
 </head>
 <body>
 
-  <!-- Hero / Header -->
+  <!-- ===== Hero / Header ===== -->
   <section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop has-text-centered">
-        <h1 class="title is-1">AgReason: A Benchmark for Agricultural Reasoning</h1>
-        <p class="subtitle">Iowa State University — Conference Name &amp; Year</p>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">AgReason: A Benchmark for Agricultural Reasoning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Iowa State University<br>Conference Name and Year</span>
+              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+            </div>
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -63,23 +110,41 @@
     </div>
   </section>
 
-
-  <!-- Abstract -->
+  <!-- ===== Abstract ===== -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Abstract</h2>
-      <div class="content">
-        <p>We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.</p>
-        <ul>
-          <li><em>AgThoughts Dataset</em> — 44.4K expert-seeded questions with step-by-step LLM-generated answers screened for correctness.</li>
-          <li><em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by experts and using an LLM-as-judge.</li>
-          <li><em>AgThinker-8B</em> — fine-tuned Phi3 8B model that narrows the gap to expert agronomists by 10 percentage points.</li>
-        </ul>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
+            </p>
+            <ul>
+              <li>
+                <em>AgThoughts Dataset</em> — 44.4K expert-seeded questions whose answers and step-by-step traces were produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
+              </li>
+              <li>
+                <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain experts and using an LLM-as-judge for head-to-head evaluation of model performance.
+              </li>
+              <li>
+                <em>AgThinker-8B</em> — a Phi3 8B model fine-tuned on our dataset that improves exact-match accuracy by 10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
+              </li>
+            </ul>
+            <p>
+              Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers both a focused yardstick and a training resource for future agricultural AI.
+            </p>
+            <p>
+              For more details, please visit our project page:
+              <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader Board</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Leaderboard Section -->
+  <!-- ===== Leaderboard Section ===== -->
   <section class="section" id="leaderboard-section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">LLM Leaderboard</h2>
@@ -93,7 +158,6 @@
           </a>
         </div>
         <div class="level-right" id="column-toggles">
-          <!-- ticked by default, others unticked -->
           <label class="button is-small">
             <input type="checkbox" class="toggle-col" data-column="1" checked>
             Harvest Quality
@@ -170,35 +234,45 @@
     </div>
   </section>
 
-  <!-- BibTeX -->
+  <!-- ===== BibTeX ===== -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-
+@misc{Label Studio,
+  title={{Label Studio}: Data labeling software},
+  url={https://github.com/HumanSignal/label-studio},
+  note={Open source software available from https://github.com/HumanSignal/label-studio},
+  author={Maxim Tkachenko and Mikhail Malyuk and Andrey Holmanyuk and Nikolai Liubimov},
+  year={2020-2025},
+}
       </code></pre>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          Built with the
-          <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
-            Academic Project Page Template
-          </a>.
-          Licensed under
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-            CC BY-SA 4.0
-          </a>.
-        </p>
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <p>
+            This page was built using the
+            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
+              Academic Project Page Template
+            </a>,
+            adopted from the
+            <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            Licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+              Creative Commons Attribution-ShareAlike 4.0 International License
+            </a>.
+          </p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- DataTables + column‐toggle & formatting -->
+  <!-- ===== DataTables init + column-toggle & number formatting ===== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const table = $('#leaderboard').DataTable({
@@ -219,7 +293,7 @@
           { data: 'Overall', render: d => d.toFixed(3) }
         ],
         columnDefs: [
-          // hide unchecked by default (2–10)
+          // hide unchecked by default (columns 2–10)
           { targets: [2,3,4,5,6,7,8,9,10], visible: false }
         ],
         order: [[11, 'desc']],
@@ -228,7 +302,7 @@
         responsive: true
       });
 
-      // toggle visibility on checkbox change
+      // checkbox toggles
       $('#column-toggles').on('change', 'input.toggle-col', function() {
         const idx = +this.getAttribute('data-column');
         table.column(idx).visible(this.checked);
