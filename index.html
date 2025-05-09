@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriately -->
+  <!-- Meta tags -->
   <meta name="description" content="DESCRIPTION META TAG">
   <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
   <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG"/>
@@ -22,166 +22,138 @@
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <!-- Your existing stylesheets -->
+  <!-- Bulma & FontAwesome -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <!-- DataTables Bulma CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
 
-  <!-- Your existing scripts -->
+  <!-- jQuery & DataTables JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-
-  <!-- DataTables core JS -->
-  <script
-    src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"
-    defer
-  ></script>
-  <!-- DataTables Bulma integration -->
-  <script
-    src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js"
-    defer
-  ></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" defer></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js" defer></script>
 </head>
 <body>
 
-  <!-- ===== Hero / Header ===== -->
+  <!-- Hero / Header -->
   <section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">AgReason: A Benchmark for Agricultural Reasoning</h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-              </span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">Iowa State University<br>Conference Name and Year</span>
-              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-            </div>
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank" class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-1">AgReason: A Benchmark for Agricultural Reasoning</h1>
+        <p class="subtitle">Iowa State University — Conference Name &amp; Year</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== Teaser / Banner ===== -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="static/images/ag_question_categories_fixed2.svg" alt="Banner SVG" style="width:100%; height:auto;">
-        <h2 class="subtitle has-text-centered">A conceptual overview of categorized agricultural question types.</h2>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Abstract ===== -->
+  <!-- Abstract -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
-            </p>
-            <ul>
-              <li>
-                <em>AgThoughts Dataset</em> — 44.4 K expert-seeded questions whose answers and step-by-step traces were produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
-              </li>
-              <li>
-                <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain experts and using an LLM-as-judge for head-to-head evaluation of model performance.
-              </li>
-              <li>
-                <em>AgThinker-8B</em> — a Phi3 8 B-parameter model fine-tuned on our dataset that improves exact-match accuracy by 10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
-              </li>
-            </ul>
-            <p>
-              Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers both a focused yardstick and a training resource for future agricultural AI.
-            </p>
-            <p>
-              For more details, please visit our project page:
-              <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader Board</a>
-            </p>
-          </div>
-        </div>
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <div class="content">
+        <p>We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.</p>
+        <ul>
+          <li><em>AgThoughts Dataset</em> — 44.4K expert-seeded questions with step-by-step LLM-generated answers screened for correctness.</li>
+          <li><em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by experts and using an LLM-as-judge.</li>
+          <li><em>AgThinker-8B</em> — fine-tuned Phi3 8B model that narrows the gap to expert agronomists by 10 percentage points.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ===== Leaderboard ===== -->
+  <!-- Leaderboard Section -->
   <section class="section" id="leaderboard-section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">LLM Leaderboard</h2>
-      <table
-        id="leaderboard"
-        class="table is-striped is-hoverable is-fullwidth"
-        style="width:100%"
-      >
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Harvest Quality</th>
-            <th>In-Season Nutrients</th>
-            <th>Soil</th>
-            <th>Weather</th>
-            <th>Diseases</th>
-            <th>Insects</th>
-            <th>Weeds</th>
-            <th>Cover Crop</th>
-            <th>Crop</th>
-            <th>Management</th>
-            <th>Overall</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Populated dynamically -->
-        </tbody>
-      </table>
+
+      <!-- Download & Column toggles -->
+      <div class="level mb-3">
+        <div class="level-left">
+          <a href="static/data/leaderboard.json" download class="button is-link is-small">
+            <span class="icon"><i class="fas fa-download"></i></span>
+            <span>Download Dataset</span>
+          </a>
+        </div>
+        <div class="level-right" id="column-toggles">
+          <!-- ticked by default, others unticked -->
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="1" checked>
+            Harvest Quality
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="2">
+            In-Season Nutrients
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="3">
+            Soil
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="4">
+            Weather
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="5">
+            Diseases
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="6">
+            Insects
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="7">
+            Weeds
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="8">
+            Cover Crop
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="9">
+            Crop
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="10">
+            Management
+          </label>
+          <label class="button is-small">
+            <input type="checkbox" class="toggle-col" data-column="11" checked>
+            Overall
+          </label>
+        </div>
+      </div>
+
+      <!-- Table wrapper for horizontal scroll -->
+      <div class="table-container" style="overflow-x:auto;">
+        <table
+          id="leaderboard"
+          class="table is-striped is-hoverable is-fullwidth"
+          style="width:100%"
+        >
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Harvest Quality</th>
+              <th>In-Season Nutrients</th>
+              <th>Soil</th>
+              <th>Weather</th>
+              <th>Diseases</th>
+              <th>Insects</th>
+              <th>Weeds</th>
+              <th>Cover Crop</th>
+              <th>Crop</th>
+              <th>Management</th>
+              <th>Overall</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
-  <!-- ===== BibTeX ===== -->
+  <!-- BibTeX -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
@@ -197,52 +169,58 @@
     </div>
   </section>
 
-  <!-- ===== Footer ===== -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <p>
-            This page was built using the
-            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
-              Academic Project Page Template
-            </a>
-            which was adopted from the
-            <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer.
-            This website is licensed under
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-              Creative Commons Attribution-ShareAlike 4.0 International License
-            </a>.
-          </p>
-        </div>
+      <div class="content has-text-centered">
+        <p>
+          Built with the
+          <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
+            Academic Project Page Template
+          </a>.
+          Licensed under
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+            CC BY-SA 4.0
+          </a>.
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- ===== DataTables Initialization ===== -->
+  <!-- DataTables + column‐toggle & formatting -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      $('#leaderboard').DataTable({
+      const table = $('#leaderboard').DataTable({
         ajax: 'static/data/leaderboard.json',
+        scrollX: true,
         columns: [
           { data: 'model' },
-          { data: 'AbioticQuestions_HarvestQuality' },
-          { data: 'AbioticQuestions_InSeason_Nutrients' },
-          { data: 'AbioticQuestions_Soil' },
-          { data: 'AbioticQuestions_Weather' },
-          { data: 'BioticQuestions_Diseases' },
-          { data: 'BioticQuestions_Insects' },
-          { data: 'BioticQuestions_Weeds' },
-          { data: 'CropQuestions_CoverCrop' },
-          { data: 'CropQuestions_Crop' },
-          { data: 'ManagementQuestions_Management' },
-          { data: 'Overall' }
+          { data: 'AbioticQuestions_HarvestQuality', render: d => d.toFixed(3) },
+          { data: 'AbioticQuestions_InSeason_Nutrients', render: d => d.toFixed(3) },
+          { data: 'AbioticQuestions_Soil', render: d => d.toFixed(3) },
+          { data: 'AbioticQuestions_Weather', render: d => d.toFixed(3) },
+          { data: 'BioticQuestions_Diseases', render: d => d.toFixed(3) },
+          { data: 'BioticQuestions_Insects', render: d => d.toFixed(3) },
+          { data: 'BioticQuestions_Weeds', render: d => d.toFixed(3) },
+          { data: 'CropQuestions_CoverCrop', render: d => d.toFixed(3) },
+          { data: 'CropQuestions_Crop', render: d => d.toFixed(3) },
+          { data: 'ManagementQuestions_Management', render: d => d.toFixed(3) },
+          { data: 'Overall', render: d => d.toFixed(3) }
         ],
-        order: [[11, 'desc']],  // sort by Overall
+        columnDefs: [
+          // hide unchecked by default (2–10)
+          { targets: [2,3,4,5,6,7,8,9,10], visible: false }
+        ],
+        order: [[11, 'desc']],
         pageLength: 10,
         lengthChange: false,
         responsive: true
+      });
+
+      // toggle visibility on checkbox change
+      $('#column-toggles').on('change', 'input.toggle-col', function() {
+        const idx = +this.getAttribute('data-column');
+        table.column(idx).visible(this.checked);
       });
     });
   </script>
