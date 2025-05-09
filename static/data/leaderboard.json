@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "model": "GPT-4",
+      "reasoning": 95.2,
+      "coding": 92.5,
+      "mathematics": 88.7,
+      "data_analysis": 90.1,
+      "language": 93.4,
+      "instruction": 94.0,
+      "average": 92.3
+    },
+    {
+      "model": "Claude 3",
+      "reasoning": 93.1,
+      "coding": 89.4,
+      "mathematics": 85.6,
+      "data_analysis": 87.9,
+      "language": 91.2,
+      "instruction": 90.5,
+      "average": 89.6
+    }
+  ]
+}
