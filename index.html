@@ -18,7 +18,7 @@
   <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>AgriIQ: A Benchmark for Agricultural Reasoning</title>
+  <title>AgReason: A Benchmark for Agricultural Reasoning</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -63,7 +63,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">AgriIQ: A Benchmark for Agricultural Reasoning</h1>
+            <h1 class="title is-1 publication-title">AgReason: A Benchmark for Agricultural Reasoning</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,
@@ -114,30 +114,40 @@
       </div>
     </div>
   </section>
-
-  <!-- ===== Abstract ===== -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              The agricultural domain presents unique challenges for question-answering systems due to its specialized terminology, context-dependent decisions, and reliance on localized knowledge. While large language models (LLMs) excel at general reasoning tasks, their ability to handle domain-specific agricultural reasoning has not been sufficiently explored.
-            </p>
-            <p>
-              This work bridges that gap by introducing a dedicated dataset and a comprehensive benchmarking strategy tailored to agronomic reasoning tasks. Our key contributions include:
-            </p>
-            <ul>
-              <li>A curated collection of <strong>55,000 agronomy-focused QA pairs</strong> enriched with reasoning traces, developed via an expert-in-the-loop pipeline to ensure relevance, quality, and clarity.</li>
-              <li>A <strong>novel evaluation framework</strong> that assesses reasoning capabilities across models, distinguishing between reasoning and non-reasoning LLMs.</li>
-              <li>A <strong>distilled lightweight model</strong> trained on the dataset, offering performance comparable to larger models while remaining efficient and scalable.</li>
-            </ul>
-          </div>
+<!-- ===== Abstract ===== -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
+          </p>
+          <ul>
+            <li>
+              <em>AgThoughts Dataset</em> — 44.4 K expert-seeded questions whose answers and step-by-step traces were produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
+            </li>
+            <li>
+              <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain experts and using an LLM-as-judge for head-to-head evaluation of model performance.
+            </li>
+            <li>
+              <em>AgThinker-8B</em> — a Phi3 8 B-parameter model fine-tuned on our dataset that improves exact-match accuracy by 10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
+            </li>
+          </ul>
+          <p>
+            Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers both a focused yardstick and a training resource for future agricultural AI.
+          </p>
+          <p>
+            For more details, please visit our project page: 
+            <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader Board</a>
+          </p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ===== Leaderboard ===== -->
   <section class="section" id="leaderboard-section">
@@ -197,29 +207,31 @@
       </div>
     </div>
   </footer>
-
-  <!-- ===== DataTables Initialization ===== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      $('#leaderboard').DataTable({
-        ajax: 'static/data/leaderboard.json',
-        columns: [
-          { data: 'model' },
-          { data: 'reasoning' },
-          { data: 'coding' },
-          { data: 'mathematics' },
-          { data: 'data_analysis' },
-          { data: 'language' },
-          { data: 'instruction' },
-          { data: 'average' }
-        ],
-        order: [[7, 'desc']],
-        pageLength: 10,
-        lengthChange: false,
-        responsive: true
-      });
+<!-- ===== DataTables Initialization ===== -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    $('#leaderboard').DataTable({
+      ajax: 'static/data/leaderboard.json',
+      columns: [
+        { data: 'model' },
+        { data: 'AbioticQuestions_HarvestQuality' },
+        { data: 'AbioticQuestions_InSeason_Nutrients' },
+        { data: 'AbioticQuestions_Soil' },
+        { data: 'AbioticQuestions_Weather' },
+        { data: 'BioticQuestions_Diseases' },
+        { data: 'BioticQuestions_Insects' },
+        { data: 'BioticQuestions_Weeds' },
+        { data: 'CropQuestions_CoverCrop' },
+        { data: 'CropQuestions_Crop' },
+        { data: 'ManagementQuestions_Management' },
+        { data: 'Overall' }
+      ],
+      order: [[11, 'desc']],  // sort by Overall (0-based index)
+      pageLength: 10,
+      lengthChange: false,
+      responsive: true
     });
-  </script>
-
+  });
+</script>
 </body>
 </html>
