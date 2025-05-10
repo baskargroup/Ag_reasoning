@@ -159,83 +159,123 @@
       </div>
     </div>
   </section>
+<!-- ===== Improved Leaderboard Section ===== -->
+<section class="section" id="leaderboard-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Model Performance Leaderboard</h2>
+    
+    <!-- Category Filter Tabs -->
+    <div class="tabs is-centered is-boxed" id="category-tabs">
+      <ul>
+        <li class="is-active" data-view="overall"><a>Overall</a></li>
+        <li data-view="abiotic"><a>Abiotic Factors</a></li>
+        <li data-view="biotic"><a>Biotic Factors</a></li>
+        <li data-view="crop"><a>Crop</a></li>
+        <li data-view="management"><a>Management</a></li>
+        <li data-view="custom"><a>Custom View</a></li>
+      </ul>
+    </div>
+    
+    <!-- Custom View Options (initially hidden) -->
+    <div id="custom-view-options" style="display: none;" class="mb-4">
+      <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap is-justify-content-center">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="1" checked>
+            Harvest Quality
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="2" checked>
+            In-Season Nutrients
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="3" checked>
+            Soil
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="4" checked>
+            Weather
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="5" checked>
+            Diseases
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="6" checked>
+            Insects
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="7" checked>
+            Weeds
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="8" checked>
+            Cover Crop
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="9" checked>
+            Crop
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="10" checked>
+            Management
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" class="toggle-col" data-column="11" checked>
+            Overall
+          </label>
+        </div>
+      </div>
+    </div>
 
-  <!-- ===== Leaderboard Section ===== -->
-  <!-- Two‑row column‑toggle pills -->
-  <div id="column-toggles">
-    <!-- Row 1 -->
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="1" checked>
-      Harvest&nbsp;Quality
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="2">
-      In‑Season&nbsp;Nutrients
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="3">
-      Soil
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="4">
-      Weather
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="5">
-      Diseases
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="6">
-      Insects
-    </label>
-
-    <!-- Row 2 -->
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="7">
-      Weeds
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="8">
-      Cover&nbsp;Crop
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="9">
-      Crop
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="10">
-      Management
-    </label>
-    <label class="toggle-pill">
-      <input type="checkbox" class="toggle-col" data-column="11" checked>
-      Overall
-    </label>
+    <!-- Table wrapper with shadow and rounded corners -->
+    <div class="box table-container">
+      <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Harvest Quality</th>
+            <th>In-Season Nutrients</th>
+            <th>Soil</th>
+            <th>Weather</th>
+            <th>Diseases</th>
+            <th>Insects</th>
+            <th>Weeds</th>
+            <th>Cover Crop</th>
+            <th>Crop</th>
+            <th>Management</th>
+            <th>Overall</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    
+    <div class="content is-small has-text-centered mt-3">
+      <p>Click on column headers to sort. Use the tabs above to switch between predefined views or create a custom view.</p>
+    </div>
   </div>
-
-  <!-- Table wrapper for horizontal scroll -->
-  <div class="table-container" style="overflow-x:auto;">
-    <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth" style="width:100%">
-      <thead>
-        <tr>
-          <th>Model</th>
-          <th>Harvest Quality</th>
-          <th>In-Season Nutrients</th>
-          <th>Soil</th>
-          <th>Weather</th>
-          <th>Diseases</th>
-          <th>Insects</th>
-          <th>Weeds</th>
-          <th>Cover Crop</th>
-          <th>Crop</th>
-          <th>Management</th>
-          <th>Overall</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  </div>
-  </section>
+</section>
 
   <!-- ===== BibTeX ===== -->
   <section class="section" id="BibTeX">
@@ -276,42 +316,184 @@
   </footer>
 
   <!-- ===== DataTables init + column-toggle & number formatting ===== -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const table = $('#leaderboard').DataTable({
-        ajax: 'static/data/leaderboard.json',
-        scrollX: true,
-        columns: [
-          { data: 'model' },
-          { data: 'AbioticQuestions_HarvestQuality', render: d => d.toFixed(3) },
-          { data: 'AbioticQuestions_InSeason_Nutrients', render: d => d.toFixed(3) },
-          { data: 'AbioticQuestions_Soil', render: d => d.toFixed(3) },
-          { data: 'AbioticQuestions_Weather', render: d => d.toFixed(3) },
-          { data: 'BioticQuestions_Diseases', render: d => d.toFixed(3) },
-          { data: 'BioticQuestions_Insects', render: d => d.toFixed(3) },
-          { data: 'BioticQuestions_Weeds', render: d => d.toFixed(3) },
-          { data: 'CropQuestions_CoverCrop', render: d => d.toFixed(3) },
-          { data: 'CropQuestions_Crop', render: d => d.toFixed(3) },
-          { data: 'ManagementQuestions_Management', render: d => d.toFixed(3) },
-          { data: 'Overall', render: d => d.toFixed(3) }
-        ],
-        columnDefs: [
-          // hide unchecked by default (columns 2–10)
-          { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10], visible: false }
-        ],
-        order: [[11, 'desc']],
-        pageLength: 10,
-        lengthChange: false,
-        responsive: true
-      });
+  <!-- Add this to your CSS section -->
+<style>
+  /* Leaderboard styling */
+  #leaderboard thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    z-index: 1;
+  }
+  
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_paginate {
+    margin-top: 1rem;
+  }
+  
+  /* Highlight the highest score in each column */
+  td.highlight {
+    font-weight: bold;
+    background-color: rgba(72, 199, 142, 0.1) !important;
+  }
+  
+  /* Better tab styling */
+  .tabs li.is-active {
+    font-weight: bold;
+  }
+  
+  /* Custom checkbox styling */
+  .control {
+    margin: 0.4rem;
+  }
+  
+  .checkbox {
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  
+  .checkbox:hover {
+    background-color: #e8e8e8;
+  }
+</style>
 
-      // checkbox toggles
-      $('#column-toggles').on('change', 'input.toggle-col', function () {
-        const idx = +this.getAttribute('data-column');
-        table.column(idx).visible(this.checked);
+<!-- Add this to your JavaScript section -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize DataTable
+  const leaderboardTable = $('#leaderboard').DataTable({
+    ajax: 'static/data/leaderboard.json',
+    scrollX: true,
+    columns: [
+      { data: 'model' },
+      { data: 'AbioticQuestions_HarvestQuality', render: d => d.toFixed(3) },
+      { data: 'AbioticQuestions_InSeason_Nutrients', render: d => d.toFixed(3) },
+      { data: 'AbioticQuestions_Soil', render: d => d.toFixed(3) },
+      { data: 'AbioticQuestions_Weather', render: d => d.toFixed(3) },
+      { data: 'BioticQuestions_Diseases', render: d => d.toFixed(3) },
+      { data: 'BioticQuestions_Insects', render: d => d.toFixed(3) },
+      { data: 'BioticQuestions_Weeds', render: d => d.toFixed(3) },
+      { data: 'CropQuestions_CoverCrop', render: d => d.toFixed(3) },
+      { data: 'CropQuestions_Crop', render: d => d.toFixed(3) },
+      { data: 'ManagementQuestions_Management', render: d => d.toFixed(3) },
+      { data: 'Overall', render: d => d.toFixed(3) }
+    ],
+    order: [[11, 'desc']],
+    pageLength: 10,
+    lengthChange: false,
+    drawCallback: function() {
+      highlightBestScores();
+    }
+  });
+
+  // Function to highlight the best scores in each column
+  function highlightBestScores() {
+    // For each column except the first (model name)
+    for (let i = 1; i <= 11; i++) {
+      let maxVal = -1;
+      let maxIdx = -1;
+      
+      // Find maximum value
+      leaderboardTable.column(i, {search:'applied'}).data().each(function(value, index) {
+        if (parseFloat(value) > maxVal) {
+          maxVal = parseFloat(value);
+          maxIdx = index;
+        }
       });
-    });
-  </script>
+      
+      // Remove highlight class from all cells in this column
+      $(leaderboardTable.column(i).nodes()).removeClass('highlight');
+      
+      // Add highlight class to cell with maximum value
+      if (maxIdx >= 0) {
+        $(leaderboardTable.column(i).nodes()[maxIdx]).addClass('highlight');
+      }
+    }
+  }
+
+  // Tab switching functionality
+  $('#category-tabs li').on('click', function() {
+    // Remove active from all tabs
+    $('#category-tabs li').removeClass('is-active');
+    // Add active to clicked tab
+    $(this).addClass('is-active');
+    
+    // Get the selected view
+    const view = $(this).data('view');
+    
+    // Hide custom view options by default
+    $('#custom-view-options').hide();
+    
+    // Show all columns first
+    for (let i = 1; i <= 11; i++) {
+      leaderboardTable.column(i).visible(true);
+    }
+    
+    // Apply the appropriate view
+    switch(view) {
+      case 'overall':
+        // Show only model and overall score
+        for (let i = 1; i <= 10; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        break;
+      case 'abiotic':
+        // Show abiotic categories (columns 1-4)
+        for (let i = 5; i <= 10; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        break;
+      case 'biotic':
+        // Show biotic categories (columns 5-7)
+        for (let i = 1; i <= 4; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        for (let i = 8; i <= 10; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        break;
+      case 'crop':
+        // Show crop categories (columns 8-9)
+        for (let i = 1; i <= 7; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        leaderboardTable.column(10).visible(false);
+        break;
+      case 'management':
+        // Show management category (column 10)
+        for (let i = 1; i <= 9; i++) {
+          leaderboardTable.column(i).visible(false);
+        }
+        break;
+      case 'custom':
+        // Show custom view options
+        $('#custom-view-options').show();
+        // Update visibility based on checkboxes
+        $('.toggle-col').each(function() {
+          const columnIdx = parseInt($(this).data('column'));
+          leaderboardTable.column(columnIdx).visible($(this).prop('checked'));
+        });
+        break;
+    }
+    
+    // Redraw the table to update column visibility
+    leaderboardTable.columns.adjust().draw();
+  });
+  
+  // Handle checkbox changes for custom view
+  $('.toggle-col').on('change', function() {
+    const columnIdx = parseInt($(this).data('column'));
+    leaderboardTable.column(columnIdx).visible($(this).prop('checked'));
+    leaderboardTable.columns.adjust().draw();
+  });
+  
+  // Trigger click on Overall tab to set initial view
+  $('#category-tabs li[data-view="overall"]').click();
+});
+</script>
 </body>
 
 </html>
