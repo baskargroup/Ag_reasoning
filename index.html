@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, keywords, viewport -->
   <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
   <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
   <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
   <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
@@ -44,6 +45,7 @@
   <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" defer></script>
   <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bulma.min.js" defer></script>
 </head>
+
 <body>
 
   <!-- ===== Hero / Header ===== -->
@@ -70,34 +72,33 @@
             </div>
             <div class="publication-links">
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="button is-normal is-rounded is-dark">
+                <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                  class="button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank" class="button is-normal is-rounded is-dark">
+                <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank"
+                  class="button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="button is-normal is-rounded is-dark">
+                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
-                    <!-- Dataset -->
-
-                  <span class="link-block">
-                      <a href="" target="_blank"
-                          class="external-link button is-normal is-rounded is-dark">
-                          <span class="icon" style="vertical-align: middle; font-size: 20px;">&#129303;</span>
-                          <span style="vertical-align: middle;">Dataset</span>
-                      </a>
-                  </span>
-
-
+              <!-- Dataset -->
+              <span class="link-block">
+                <a href="https://your-dataset-url.com" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span>
+                  <span>Dataset</span>
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -109,11 +110,8 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img
-          src="static/images/ag_question_categories_fixed2.svg"
-          alt="A conceptual overview of categorized agricultural question types"
-          style="width:100%; height:auto;"
-        >
+        <img src="static/images/ag_question_categories_fixed2.svg"
+          alt="A conceptual overview of categorized agricultural question types" style="width:100%; height:auto;">
         <h2 class="subtitle has-text-centered">
           A conceptual overview of categorized agricultural question types.
         </h2>
@@ -129,25 +127,32 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
+              We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language
+              models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
             </p>
             <ul>
               <li>
-                <em>AgThoughts Dataset</em> — 44.4K expert-seeded questions whose answers and step-by-step traces were produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
+                <em>AgThoughts Dataset</em> — 44.4K expert-seeded questions whose answers and step-by-step traces were
+                produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
               </li>
               <li>
-                <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain experts and using an LLM-as-judge for head-to-head evaluation of model performance.
+                <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain
+                experts and using an LLM-as-judge for head-to-head evaluation of model performance.
               </li>
               <li>
-                <em>AgThinker-8B</em> — a Phi3 8B model fine-tuned on our dataset that improves exact-match accuracy by 10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
+                <em>AgThinker-8B</em> — a Phi3 8B model fine-tuned on our dataset that improves exact-match accuracy by
+                10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
               </li>
             </ul>
             <p>
-              Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers both a focused yardstick and a training resource for future agricultural AI.
+              Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures
+              consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers
+              both a focused yardstick and a training resource for future agricultural AI.
             </p>
             <p>
               For more details, please visit our project page:
-              <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader Board</a>
+              <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader
+                Board</a>
             </p>
           </div>
         </div>
@@ -155,74 +160,69 @@
     </div>
   </section>
 
-  <!-- ===== Leaderboard Section ===== -->
+    <!-- ===== Leaderboard Section ===== -->
   <section class="section" id="leaderboard-section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">LLM Leaderboard</h2>
 
-      <!-- Download & Column toggles -->
-      <div class="level mb-3">
-        <div class="level-left">
-          <a href="static/data/leaderboard.json" download class="button is-link is-small">
-            <span class="icon"><i class="fas fa-download"></i></span>
-            <span>Download Dataset</span>
-          </a>
-        </div>
-        <div class="level-right" id="column-toggles">
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="1" checked>
-            Harvest Quality
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="2">
-            In-Season Nutrients
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="3">
-            Soil
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="4">
-            Weather
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="5">
-            Diseases
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="6">
-            Insects
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="7">
-            Weeds
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="8">
-            Cover Crop
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="9">
-            Crop
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="10">
-            Management
-          </label>
-          <label class="button is-small">
-            <input type="checkbox" class="toggle-col" data-column="11" checked>
-            Overall
-          </label>
-        </div>
+      <!-- Two-row column-toggle pills -->
+      <div id="column-toggles">
+        <!-- Row 1: metric averages -->
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="1" checked>
+          Reasoning Average
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="2">
+          Coding Average
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="3" checked>
+          Mathematics Average
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="4">
+          Data Analysis Average
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="5">
+          Language Average
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-col" data-column="6">
+          IF Average
+        </label>
+
+        <!-- Row 2: show sub-categories -->
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="1">
+          Show Subcategories
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="2">
+          Show Subcategories
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="3" checked>
+          Show Subcategories
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="4">
+          Show Subcategories
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="5">
+          Show Subcategories
+        </label>
+        <label class="toggle-pill">
+          <input type="checkbox" class="toggle-subcol" data-column="6">
+          Show Subcategories
+        </label>
       </div>
 
       <!-- Table wrapper for horizontal scroll -->
       <div class="table-container" style="overflow-x:auto;">
-        <table
-          id="leaderboard"
-          class="table is-striped is-hoverable is-fullwidth"
-          style="width:100%"
-        >
+        <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth" style="width:100%">
           <thead>
             <tr>
               <th>Model</th>
@@ -305,7 +305,7 @@
         ],
         columnDefs: [
           // hide unchecked by default (columns 2–10)
-          { targets: [2,3,4,5,6,7,8,9,10], visible: false }
+          { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10], visible: false }
         ],
         order: [[11, 'desc']],
         pageLength: 10,
@@ -314,11 +314,12 @@
       });
 
       // checkbox toggles
-      $('#column-toggles').on('change', 'input.toggle-col', function() {
+      $('#column-toggles').on('change', 'input.toggle-col', function () {
         const idx = +this.getAttribute('data-column');
         table.column(idx).visible(this.checked);
       });
     });
   </script>
 </body>
+
 </html>

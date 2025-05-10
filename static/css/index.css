@@ -134,4 +134,32 @@ body {
 }
 
 
+#column-toggles {
+  display: grid;
+  /* exactly two rows: first metrics, then subcategory toggles */
+  grid-template-rows: repeat(2, auto);
+  /* fill across columns */
+  grid-auto-flow: column;
+  /* spacing between items */
+  gap: 0.5rem 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
+/* optional “pill” styling */
+.toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3em 0.6em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+  user-select: none;
+}
+.toggle-pill input {
+  margin-right: 0.4em;
+}
+.toggle-pill:hover {
+  background: #f5f5f5;
+}
