@@ -685,50 +685,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide custom view options by default
     $('#custom-view-options').hide();
     
-    // Show all columns first
-    for (let i = 1; i <= 11; i++) {
-      leaderboardTable.column(i).visible(true);
+    // Column definitions by category
+    const columns = {
+      abiotic: [1, 2, 3, 4], // Harvest Quality, In-Season Nutrients, Soil, Weather
+      biotic: [5, 6, 7],     // Diseases, Insects, Weeds
+      crop: [8, 9],          // Cover Crop, Crop
+      management: [10]       // Management
+    };
+    
+    // First hide all metric columns
+    for (let i = 1; i <= 10; i++) {
+      leaderboardTable.column(i).visible(false);
     }
+    // Always show model and overall columns
+    leaderboardTable.column(0).visible(true);  // Model name
     
     // Apply the appropriate view
     switch(view) {
       case 'overall':
         // Show only model and overall score
-        for (let i = 1; i <= 10; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
+        leaderboardTable.column(11).visible(true); // Overall
         break;
+        
       case 'abiotic':
-        // Show abiotic categories (columns 1-4)
-        for (let i = 5; i <= 10; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
+        // Show abiotic categories
+        columns.abiotic.forEach(colIdx => {
+          leaderboardTable.column(colIdx).visible(true);
+        });
+        leaderboardTable.column(11).visible(true); // Overall
         break;
+        
       case 'biotic':
-        // Show biotic categories (columns 5-7)
-        for (let i = 1; i <= 4; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
-        for (let i = 8; i <= 10; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
+        // Show biotic categories
+        columns.biotic.forEach(colIdx => {
+          leaderboardTable.column(colIdx).visible(true);
+        });
+        leaderboardTable.column(11).visible(true); // Overall
         break;
+        
       case 'crop':
-        // Show crop categories (columns 8-9)
-        for (let i = 1; i <= 7; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
-        leaderboardTable.column(10).visible(false);
+        // Show crop categories
+        columns.crop.forEach(colIdx => {
+          leaderboardTable.column(colIdx).visible(true);
+        });
+        leaderboardTable.column(11).visible(true); // Overall
         break;
+        
       case 'management':
-        // Show management category (column 10)
-        for (let i = 1; i <= 9; i++) {
-          leaderboardTable.column(i).visible(false);
-        }
+        // Show management category
+        columns.management.forEach(colIdx => {
+          leaderboardTable.column(colIdx).visible(true);
+        });
+        leaderboardTable.column(11).visible(true); // Overall
         break;
+        
       case 'custom':
         // Show custom view options
         $('#custom-view-options').show();
+        // Show the Overall column by default
+        leaderboardTable.column(11).visible(true);
         // Update visibility based on checkboxes
         $('.toggle-col').each(function() {
           const columnIdx = parseInt($(this).data('column'));
