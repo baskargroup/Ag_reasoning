@@ -160,89 +160,81 @@
     </div>
   </section>
 
-    <!-- ===== Leaderboard Section ===== -->
-  <section class="section" id="leaderboard-section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">LLM Leaderboard</h2>
+  <!-- ===== Leaderboard Section ===== -->
+  <!-- Two‑row column‑toggle pills -->
+  <div id="column-toggles">
+    <!-- Row 1 -->
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="1" checked>
+      Harvest&nbsp;Quality
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="2">
+      In‑Season&nbsp;Nutrients
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="3">
+      Soil
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="4">
+      Weather
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="5">
+      Diseases
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="6">
+      Insects
+    </label>
 
-      <!-- Two-row column-toggle pills -->
-      <div id="column-toggles">
-        <!-- Row 1: metric averages -->
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="1" checked>
-          Reasoning Average
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="2">
-          Coding Average
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="3" checked>
-          Mathematics Average
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="4">
-          Data Analysis Average
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="5">
-          Language Average
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-col" data-column="6">
-          IF Average
-        </label>
+    <!-- Row 2 -->
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="7">
+      Weeds
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="8">
+      Cover&nbsp;Crop
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="9">
+      Crop
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="10">
+      Management
+    </label>
+    <label class="toggle-pill">
+      <input type="checkbox" class="toggle-col" data-column="11" checked>
+      Overall
+    </label>
+  </div>
 
-        <!-- Row 2: show sub-categories -->
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="1">
-          Show Subcategories
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="2">
-          Show Subcategories
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="3" checked>
-          Show Subcategories
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="4">
-          Show Subcategories
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="5">
-          Show Subcategories
-        </label>
-        <label class="toggle-pill">
-          <input type="checkbox" class="toggle-subcol" data-column="6">
-          Show Subcategories
-        </label>
-      </div>
-
-      <!-- Table wrapper for horizontal scroll -->
-      <div class="table-container" style="overflow-x:auto;">
-        <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth" style="width:100%">
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Harvest Quality</th>
-              <th>In-Season Nutrients</th>
-              <th>Soil</th>
-              <th>Weather</th>
-              <th>Diseases</th>
-              <th>Insects</th>
-              <th>Weeds</th>
-              <th>Cover Crop</th>
-              <th>Crop</th>
-              <th>Management</th>
-              <th>Overall</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
+  <!-- Table wrapper for horizontal scroll -->
+  <div class="table-container" style="overflow-x:auto;">
+    <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth" style="width:100%">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Harvest Quality</th>
+          <th>In-Season Nutrients</th>
+          <th>Soil</th>
+          <th>Weather</th>
+          <th>Diseases</th>
+          <th>Insects</th>
+          <th>Weeds</th>
+          <th>Cover Crop</th>
+          <th>Crop</th>
+          <th>Management</th>
+          <th>Overall</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  </div>
   </section>
 
   <!-- ===== BibTeX ===== -->

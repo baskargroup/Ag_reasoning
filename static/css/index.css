@@ -134,32 +134,40 @@ body {
 }
 
 
+
+/* === Column‑toggle grid =============================================== */
 #column-toggles {
   display: grid;
-  /* exactly two rows: first metrics, then subcategory toggles */
+  /* exactly 2 rows, items fill downward before wrapping rightward */
   grid-template-rows: repeat(2, auto);
-  /* fill across columns */
   grid-auto-flow: column;
-  /* spacing between items */
-  gap: 0.5rem 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
+  /* pill spacing */
+  gap: 0.5rem 0.75rem;
+  /* keep pills left‑aligned inside the container */
+  justify-content: start;
+  margin-bottom: 1.25rem;
 }
 
-/* optional “pill” styling */
+/* === Pill look & feel ================================================= */
 .toggle-pill {
+  /* uniform box size */
+  width: 165px;              /* tweak to taste */
+  box-sizing: border-box;
+  /* visual style */
   display: inline-flex;
   align-items: center;
-  padding: 0.3em 0.6em;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 0.9em;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid #d6d6d6;
+  border-radius: 0.45rem;
+  font-size: 0.85rem;
   cursor: pointer;
   user-select: none;
-}
-.toggle-pill input {
-  margin-right: 0.4em;
+  background: #f9f9f9;
+  transition: background 0.1s ease;
 }
 .toggle-pill:hover {
-  background: #f5f5f5;
+  background: #f0f0f0;
+}
+.toggle-pill input {
+  margin-right: 0.45rem;
 }
