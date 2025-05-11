@@ -33,6 +33,50 @@
   <!-- DataTables Bulma integration CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
 
+  <!-- Leaderboard Styles -->
+  <style>
+    /* Leaderboard styling */
+    #leaderboard thead th {
+      position: sticky;
+      top: 0;
+      background-color: #f5f5f5;
+      z-index: 1;
+    }
+    
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+      margin-top: 1rem;
+    }
+    
+    /* Highlight the highest score in each column */
+    td.highlight {
+      font-weight: bold;
+      background-color: rgba(72, 199, 142, 0.1) !important;
+    }
+    
+    /* Better tab styling */
+    .tabs li.is-active {
+      font-weight: bold;
+    }
+    
+    /* Custom checkbox styling */
+    .control {
+      margin: 0.4rem;
+    }
+    
+    .checkbox {
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    
+    .checkbox:hover {
+      background-color: #e8e8e8;
+    }
+  </style>
+
   <!-- jQuery & other scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -167,12 +211,11 @@
     <!-- Category Filter Tabs -->
     <div class="tabs is-centered is-boxed" id="category-tabs">
       <ul>
-        <li class="is-active" data-view="overall"><a>Overall</a></li>
         <li data-view="abiotic"><a>Abiotic Factors</a></li>
         <li data-view="biotic"><a>Biotic Factors</a></li>
         <li data-view="crop"><a>Crop</a></li>
         <li data-view="management"><a>Management</a></li>
-        <li data-view="custom"><a>Custom View</a></li>
+        <li class="is-active" data-view="custom"><a>Custom View</a></li>
       </ul>
     </div>
     
@@ -315,458 +358,341 @@
     </div>
   </footer>
 
-  <!-- ===== DataTables init + column-toggle & number formatting ===== -->
-  <!-- Add this to your CSS section -->
-<style>
-  /* Leaderboard styling */
-  #leaderboard thead th {
-    position: sticky;
-    top: 0;
-    background-color: #f5f5f5;
-    z-index: 1;
-  }
-  
-  .dataTables_wrapper .dataTables_info,
-  .dataTables_wrapper .dataTables_paginate {
-    margin-top: 1rem;
-  }
-  
-  /* Highlight the highest score in each column */
-  td.highlight {
-    font-weight: bold;
-    background-color: rgba(72, 199, 142, 0.1) !important;
-  }
-  
-  /* Better tab styling */
-  .tabs li.is-active {
-    font-weight: bold;
-  }
-  
-  /* Custom checkbox styling */
-  .control {
-    margin: 0.4rem;
-  }
-  
-  .checkbox {
-    padding: 0.5rem 0.75rem;
-    border-radius: 4px;
-    background-color: #f5f5f5;
-    display: inline-block;
-    transition: all 0.2s;
-  }
-  
-  .checkbox:hover {
-    background-color: #e8e8e8;
-  }
-</style>
-<!-- Add this to your JavaScript section -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Leaderboard data from the JSON file
-  const leaderboardData = {
-    "data": [
-      {
-        "model": "QwQ-32B",
-        "AbioticQuestions_HarvestQuality": 0.142857,
-        "AbioticQuestions_InSeason_Nutrients": 0.333333,
-        "AbioticQuestions_Soil": 0.2,
-        "AbioticQuestions_Weather": 0.166667,
-        "BioticQuestions_Diseases": 0.285714,
-        "BioticQuestions_Insects": 0.0666667,
-        "BioticQuestions_Weeds": 0.0714286,
-        "CropQuestions_CoverCrop": 0.0833333,
-        "CropQuestions_Crop": 0.307692,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.165769
-      },
-      {
-        "model": "claude_3.7_sonnet",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0,
-        "CropQuestions_CoverCrop": 0,
-        "CropQuestions_Crop": 0,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0
-      },
-      {
-        "model": "claude_3_opus",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0.0833333,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0,
-        "CropQuestions_CoverCrop": 0,
-        "CropQuestions_Crop": 0.0769231,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0160256
-      },
-      {
-        "model": "deepseek_v3",
-        "AbioticQuestions_HarvestQuality": 0.142857,
-        "AbioticQuestions_InSeason_Nutrients": 0.133333,
-        "AbioticQuestions_Soil": 0.0666667,
-        "AbioticQuestions_Weather": 0.166667, 
-        "BioticQuestions_Diseases": 0.0714286,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0,
-        "CropQuestions_CoverCrop": 0.166667,
-        "CropQuestions_Crop": 0.0769231,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0824542
-      },
-      {
-        "model": "gemini2.5-flash",
-        "AbioticQuestions_HarvestQuality": 0.857143,
-        "AbioticQuestions_InSeason_Nutrients": 0.533333,
-        "AbioticQuestions_Soil": 0.733333,
-        "AbioticQuestions_Weather": 0.75,
-        "BioticQuestions_Diseases": 0.714286,
-        "BioticQuestions_Insects": 0.733333,
-        "BioticQuestions_Weeds": 0.571429,
-        "CropQuestions_CoverCrop": 0.416667,
-        "CropQuestions_Crop": 0.615385,
-        "ManagementQuestions_Management": 0.882353,
-        "Overall": 0.680726
-      },
-      {
-        "model": "gpt4o",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0.0833333,
-        "BioticQuestions_Diseases": 0.0714286,
-        "BioticQuestions_Insects": 0.0666667,
-        "BioticQuestions_Weeds": 0.142857,
-        "CropQuestions_CoverCrop": 0,
-        "CropQuestions_Crop": 0,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0364286
-      },
-      {
-        "model": "gpto1",
-        "AbioticQuestions_HarvestQuality": 0.642857,
-        "AbioticQuestions_InSeason_Nutrients": 0.4,
-        "AbioticQuestions_Soil": 0.2,
-        "AbioticQuestions_Weather": 0.333333,
-        "BioticQuestions_Diseases": 0.571429,
-        "BioticQuestions_Insects": 0.466667,
-        "BioticQuestions_Weeds": 0.357143,
-        "CropQuestions_CoverCrop": 0.333333,
-        "CropQuestions_Crop": 0.307692,
-        "ManagementQuestions_Management": 0.235294,
-        "Overall": 0.384775
-      },
-      {
-        "model": "grok-2",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0,
-        "BioticQuestions_Diseases": 0.0714286,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0.0714286,
-        "CropQuestions_CoverCrop": 0.25,
-        "CropQuestions_Crop": 0.230769,
-        "ManagementQuestions_Management": 0.117647,
-        "Overall": 0.080794
-      },
-      {
-        "model": "grok-3-beta",
-        "AbioticQuestions_HarvestQuality": 0.5,
-        "AbioticQuestions_InSeason_Nutrients": 0.666667,
-        "AbioticQuestions_Soil": 0.4,
-        "AbioticQuestions_Weather": 0.5,
-        "BioticQuestions_Diseases": 0.714286,
-        "BioticQuestions_Insects": 0.6,
-        "BioticQuestions_Weeds": 0.428571,
-        "CropQuestions_CoverCrop": 0.333333,
-        "CropQuestions_Crop": 0.615385,
-        "ManagementQuestions_Management": 0.588235,
-        "Overall": 0.534648
-      },
-      {
-        "model": "llama4_maverick",
-        "AbioticQuestions_HarvestQuality": 0.0714286,
-        "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0.166667,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0.0714286,
-        "CropQuestions_CoverCrop": 0.166667,
-        "CropQuestions_Crop": 0.230769,
-        "ManagementQuestions_Management": 0.117647,
-        "Overall": 0.0891273
-      },
-      {
-        "model": "llama4_scout",
-        "AbioticQuestions_HarvestQuality": 0.0714286,
-        "AbioticQuestions_InSeason_Nutrients": 0.133333,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0,
-        "BioticQuestions_Diseases": 0.0714286,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0,
-        "CropQuestions_CoverCrop": 0,
-        "CropQuestions_Crop": 0.153846,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0430037
-      },
-      {
-        "model": "mistral_24B",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-        "AbioticQuestions_Soil": 0.0666667,
-        "AbioticQuestions_Weather": 0,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0.0666667,
-        "BioticQuestions_Weeds": 0.0714286,
-        "CropQuestions_CoverCrop": 0,
-        "CropQuestions_Crop": 0.153846,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0425275
-      },
-      {
-        "model": "phi3",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0,
-        "AbioticQuestions_Soil": 0,
-        "AbioticQuestions_Weather": 0,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0,
-        "BioticQuestions_Weeds": 0,
-        "CropQuestions_CoverCrop": 0.0833333,
-        "CropQuestions_Crop": 0.0769231,
-        "ManagementQuestions_Management": 0,
-        "Overall": 0.0160256
-      },
-      {
-        "model": "phi3_sft",
-        "AbioticQuestions_HarvestQuality": 0,
-        "AbioticQuestions_InSeason_Nutrients": 0,
-        "AbioticQuestions_Soil": 0.2,
-        "AbioticQuestions_Weather": 0.0833333,
-        "BioticQuestions_Diseases": 0,
-        "BioticQuestions_Insects": 0.133333,
-        "BioticQuestions_Weeds": 0.142857,
-        "CropQuestions_CoverCrop": 0.166667,
-        "CropQuestions_Crop": 0.153846,
-        "ManagementQuestions_Management": 0.0588235,
-        "Overall": 0.093886
-      }
-    ]
-  };
+  <!-- Leaderboard initialization script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM fully loaded and parsed");
 
-  // Initialize DataTable with the embedded data
-  const leaderboardTable = $('#leaderboard').DataTable({
-    data: leaderboardData.data,
-    columns: [
-      { data: 'model' },
-      { 
-        data: 'AbioticQuestions_HarvestQuality', 
-        render: function(data) { 
-          // Convert to percentage with 2 decimal places
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'AbioticQuestions_InSeason_Nutrients', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'AbioticQuestions_Soil', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'AbioticQuestions_Weather', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'BioticQuestions_Diseases', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'BioticQuestions_Insects', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'BioticQuestions_Weeds', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'CropQuestions_CoverCrop', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'CropQuestions_Crop', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'ManagementQuestions_Management', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      },
-      { 
-        data: 'Overall', 
-        render: function(data) { 
-          return (data * 100).toFixed(2) + '%'; 
-        } 
-      }
-    ],
-    order: [[11, 'desc']], // Sort by Overall column (descending)
-    pageLength: 10,
-    lengthChange: false,
-    drawCallback: function() {
-      highlightBestScores();
-    }
-  });
+      let leaderboardTable;
 
-  // Function to highlight the best scores in each column
-  function highlightBestScores() {
-    // For each column except the first (model name)
-    for (let i = 1; i <= 11; i++) {
-      let maxVal = -1;
-      let maxIdx = -1;
-      
-      // Find maximum value
-      leaderboardTable.column(i, {search:'applied'}).data().each(function(value, index) {
-        // Convert to number for comparison
-        const numValue = parseFloat(value);
-        if (numValue > maxVal) {
-          maxVal = numValue;
-          maxIdx = index;
+      const tableData = {
+        "data": [
+          {
+            "model": "QwQ-32B",
+            "AbioticQuestions_HarvestQuality": 0.142857,
+            "AbioticQuestions_InSeason_Nutrients": 0.333333,
+            "AbioticQuestions_Soil": 0.2,
+            "AbioticQuestions_Weather": 0.166667,
+            "BioticQuestions_Diseases": 0.285714,
+            "BioticQuestions_Insects": 0.0666667,
+            "BioticQuestions_Weeds": 0.0714286,
+            "CropQuestions_CoverCrop": 0.0833333,
+            "CropQuestions_Crop": 0.307692,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.165769
+          },
+          {
+            "model": "claude_3.7_sonnet",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0,
+            "CropQuestions_CoverCrop": 0,
+            "CropQuestions_Crop": 0,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0
+          },
+          {
+            "model": "claude_3_opus",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0.0833333,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0,
+            "CropQuestions_CoverCrop": 0,
+            "CropQuestions_Crop": 0.0769231,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0160256
+          },
+          {
+            "model": "deepseek_v3",
+            "AbioticQuestions_HarvestQuality": 0.142857,
+            "AbioticQuestions_InSeason_Nutrients": 0.133333,
+            "AbioticQuestions_Soil": 0.0666667,
+            "AbioticQuestions_Weather": 0.166667, 
+            "BioticQuestions_Diseases": 0.0714286,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0,
+            "CropQuestions_CoverCrop": 0.166667,
+            "CropQuestions_Crop": 0.0769231,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0824542
+          },
+          {
+            "model": "gemini2.5-flash",
+            "AbioticQuestions_HarvestQuality": 0.857143,
+            "AbioticQuestions_InSeason_Nutrients": 0.533333,
+            "AbioticQuestions_Soil": 0.733333,
+            "AbioticQuestions_Weather": 0.75,
+            "BioticQuestions_Diseases": 0.714286,
+            "BioticQuestions_Insects": 0.733333,
+            "BioticQuestions_Weeds": 0.571429,
+            "CropQuestions_CoverCrop": 0.416667,
+            "CropQuestions_Crop": 0.615385,
+            "ManagementQuestions_Management": 0.882353,
+            "Overall": 0.680726
+          },
+          {
+            "model": "gpt4o",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0.0833333,
+            "BioticQuestions_Diseases": 0.0714286,
+            "BioticQuestions_Insects": 0.0666667,
+            "BioticQuestions_Weeds": 0.142857,
+            "CropQuestions_CoverCrop": 0,
+            "CropQuestions_Crop": 0,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0364286
+          },
+          {
+            "model": "gpto1",
+            "AbioticQuestions_HarvestQuality": 0.642857,
+            "AbioticQuestions_InSeason_Nutrients": 0.4,
+            "AbioticQuestions_Soil": 0.2,
+            "AbioticQuestions_Weather": 0.333333,
+            "BioticQuestions_Diseases": 0.571429,
+            "BioticQuestions_Insects": 0.466667,
+            "BioticQuestions_Weeds": 0.357143,
+            "CropQuestions_CoverCrop": 0.333333,
+            "CropQuestions_Crop": 0.307692,
+            "ManagementQuestions_Management": 0.235294,
+            "Overall": 0.384775
+          },
+          {
+            "model": "grok-2",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0,
+            "BioticQuestions_Diseases": 0.0714286,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0.0714286,
+            "CropQuestions_CoverCrop": 0.25,
+            "CropQuestions_Crop": 0.230769,
+            "ManagementQuestions_Management": 0.117647,
+            "Overall": 0.080794
+          },
+          {
+            "model": "grok-3-beta",
+            "AbioticQuestions_HarvestQuality": 0.5,
+            "AbioticQuestions_InSeason_Nutrients": 0.666667,
+            "AbioticQuestions_Soil": 0.4,
+            "AbioticQuestions_Weather": 0.5,
+            "BioticQuestions_Diseases": 0.714286,
+            "BioticQuestions_Insects": 0.6,
+            "BioticQuestions_Weeds": 0.428571,
+            "CropQuestions_CoverCrop": 0.333333,
+            "CropQuestions_Crop": 0.615385,
+            "ManagementQuestions_Management": 0.588235,
+            "Overall": 0.534648
+          },
+          {
+            "model": "llama4_maverick",
+            "AbioticQuestions_HarvestQuality": 0.0714286,
+            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0.166667,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0.0714286,
+            "CropQuestions_CoverCrop": 0.166667,
+            "CropQuestions_Crop": 0.230769,
+            "ManagementQuestions_Management": 0.117647,
+            "Overall": 0.0891273
+          },
+          {
+            "model": "llama4_scout",
+            "AbioticQuestions_HarvestQuality": 0.0714286,
+            "AbioticQuestions_InSeason_Nutrients": 0.133333,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0,
+            "BioticQuestions_Diseases": 0.0714286,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0,
+            "CropQuestions_CoverCrop": 0,
+            "CropQuestions_Crop": 0.153846,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0430037
+          },
+          {
+            "model": "mistral_24B",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
+            "AbioticQuestions_Soil": 0.0666667,
+            "AbioticQuestions_Weather": 0,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0.0666667,
+            "BioticQuestions_Weeds": 0.0714286,
+            "CropQuestions_CoverCrop": 0,
+            "CropQuestions_Crop": 0.153846,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0425275
+          },
+          {
+            "model": "phi3",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0,
+            "AbioticQuestions_Soil": 0,
+            "AbioticQuestions_Weather": 0,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0,
+            "BioticQuestions_Weeds": 0,
+            "CropQuestions_CoverCrop": 0.0833333,
+            "CropQuestions_Crop": 0.0769231,
+            "ManagementQuestions_Management": 0,
+            "Overall": 0.0160256
+          },
+          {
+            "model": "phi3_sft",
+            "AbioticQuestions_HarvestQuality": 0,
+            "AbioticQuestions_InSeason_Nutrients": 0,
+            "AbioticQuestions_Soil": 0.2,
+            "AbioticQuestions_Weather": 0.0833333,
+            "BioticQuestions_Diseases": 0,
+            "BioticQuestions_Insects": 0.133333,
+            "BioticQuestions_Weeds": 0.142857,
+            "CropQuestions_CoverCrop": 0.166667,
+            "CropQuestions_Crop": 0.153846,
+            "ManagementQuestions_Management": 0.0588235,
+            "Overall": 0.093886
+          }
+        ]
+      };
+
+      function highlightBestScores() {
+        if (!leaderboardTable) return;
+        for (let i = 1; i <= 11; i++) { // Iterate through score columns (1 to 11)
+          let maxVal = -Infinity;
+          let maxIdx = -1;
+          leaderboardTable.column(i, { search: 'applied' }).data().each(function (value, index) {
+            const numValue = parseFloat(value); // Ensure numeric comparison
+            if (numValue > maxVal) {
+              maxVal = numValue;
+              maxIdx = index;
+            }
+          });
+          $(leaderboardTable.column(i).nodes()).removeClass('highlight');
+          if (maxIdx !== -1) {
+            $(leaderboardTable.column(i).nodes()[maxIdx]).addClass('highlight');
+          }
         }
-      });
-      
-      // Remove highlight class from all cells in this column
-      $(leaderboardTable.column(i).nodes()).removeClass('highlight');
-      
-      // Add highlight class to cell with maximum value
-      if (maxIdx >= 0) {
-        $(leaderboardTable.column(i).nodes()[maxIdx]).addClass('highlight');
       }
-    }
-  }
 
-  // Tab switching functionality
-  $('#category-tabs li').on('click', function() {
-    // Remove active from all tabs
-    $('#category-tabs li').removeClass('is-active');
-    // Add active to clicked tab
-    $(this).addClass('is-active');
-    
-    // Get the selected view
-    const view = $(this).data('view');
-    
-    // Hide custom view options by default
-    $('#custom-view-options').hide();
-    
-    // Column definitions by category
-    const columns = {
-      abiotic: [1, 2, 3, 4], // Harvest Quality, In-Season Nutrients, Soil, Weather
-      biotic: [5, 6, 7],     // Diseases, Insects, Weeds
-      crop: [8, 9],          // Cover Crop, Crop
-      management: [10]       // Management
-    };
-    
-    // First hide all metric columns
-    for (let i = 1; i <= 10; i++) {
-      leaderboardTable.column(i).visible(false);
-    }
-    // Always show model and overall columns
-    leaderboardTable.column(0).visible(true);  // Model name
-    
-    // Apply the appropriate view
-    switch(view) {
-      case 'overall':
-        // Show only model and overall score
-        leaderboardTable.column(11).visible(true); // Overall
-        break;
-        
-      case 'abiotic':
-        // Show abiotic categories
-        columns.abiotic.forEach(colIdx => {
-          leaderboardTable.column(colIdx).visible(true);
+      try {
+        console.log("Initializing DataTable with embedded data.");
+        leaderboardTable = $('#leaderboard').DataTable({
+          data: tableData.data,
+          columns: [
+            { data: 'model', title: 'Model' },
+            { data: 'AbioticQuestions_HarvestQuality', title: 'Harvest Quality', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'AbioticQuestions_InSeason_Nutrients', title: 'In-Season Nutrients', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'AbioticQuestions_Soil', title: 'Soil', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'AbioticQuestions_Weather', title: 'Weather', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'BioticQuestions_Diseases', title: 'Diseases', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'BioticQuestions_Insects', title: 'Insects', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'BioticQuestions_Weeds', title: 'Weeds', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'CropQuestions_CoverCrop', title: 'Cover Crop', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'CropQuestions_Crop', title: 'Crop', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'ManagementQuestions_Management', title: 'Management', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
+            { data: 'Overall', title: 'Overall', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' }
+          ],
+          order: [[11, 'desc']],
+          pageLength: 10,
+          lengthChange: false,
+          responsive: true,
+          drawCallback: function() {
+            console.log("Table redrawn, calling highlightBestScores.");
+            highlightBestScores();
+          }
         });
-        leaderboardTable.column(11).visible(true); // Overall
-        break;
-        
-      case 'biotic':
-        // Show biotic categories
-        columns.biotic.forEach(colIdx => {
-          leaderboardTable.column(colIdx).visible(true);
+        console.log("DataTable initialized.");
+
+        // Tab switching logic
+        $('#category-tabs li a').on('click', function(e) {
+          e.preventDefault();
+          console.log("Tab clicked: ", $(this).parent().data('view'));
+
+          $('#category-tabs li').removeClass('is-active');
+          $(this).parent().addClass('is-active');
+
+          const view = $(this).parent().data('view');
+          const customViewOptions = $('#custom-view-options');
+
+          // Default: hide all score columns (1 to 10), always show Model (0) and Overall (11)
+          for (let i = 1; i <= 10; i++) {
+            leaderboardTable.column(i).visible(false);
+          }
+          leaderboardTable.column(0).visible(true); // Model
+          leaderboardTable.column(11).visible(true); // Overall score column initially visible
+
+          customViewOptions.hide();
+
+          if (view === 'abiotic') {
+            [1, 2, 3, 4].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
+          } else if (view === 'biotic') {
+            [5, 6, 7].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
+          } else if (view === 'crop') {
+            [8, 9].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
+          } else if (view === 'management') {
+            leaderboardTable.column(10).visible(true);
+          } else if (view === 'custom') {
+            customViewOptions.show();
+            // For custom view, column visibility is determined by checkboxes.
+            // The Overall score column (11) is also controlled by its checkbox.
+            $('.toggle-col').each(function() {
+                const colIdx = parseInt($(this).data('column'));
+                leaderboardTable.column(colIdx).visible($(this).prop('checked'));
+            });
+          } 
+          // Removed 'else if (view === \'overall\')' block as the tab is deleted.
+          // The default setup above handles initial state for other views before specific columns are shown.
+
+          leaderboardTable.columns.adjust().responsive.recalc().draw();
+          console.log("Columns adjusted and table redrawn for view: ", view);
         });
-        leaderboardTable.column(11).visible(true); // Overall
-        break;
-        
-      case 'crop':
-        // Show crop categories
-        columns.crop.forEach(colIdx => {
-          leaderboardTable.column(colIdx).visible(true);
+
+        // Checkbox change handler for custom view
+        $('.toggle-col').on('change', function() {
+          if (!leaderboardTable) return;
+          const colIdx = parseInt($(this).data('column'));
+          leaderboardTable.column(colIdx).visible($(this).prop('checked'));
+          leaderboardTable.columns.adjust().responsive.recalc().draw();
+           console.log(`Custom view: Column ${colIdx} visibility changed to ${$(this).prop('checked')}`);
         });
-        leaderboardTable.column(11).visible(true); // Overall
-        break;
+
+        // Initial view setup: Click the "Custom" tab by default
+        console.log("Setting initial view to 'custom'.");
+        $('#category-tabs li[data-view="custom"] a').click();
         
-      case 'management':
-        // Show management category
-        columns.management.forEach(colIdx => {
-          leaderboardTable.column(colIdx).visible(true);
-        });
-        leaderboardTable.column(11).visible(true); // Overall
-        break;
-        
-      case 'custom':
-        // Show custom view options
-        $('#custom-view-options').show();
-        // Show the Overall column by default
-        leaderboardTable.column(11).visible(true);
-        // Update visibility based on checkboxes
-        $('.toggle-col').each(function() {
-          const columnIdx = parseInt($(this).data('column'));
-          leaderboardTable.column(columnIdx).visible($(this).prop('checked'));
-        });
-        break;
-    }
-    
-    // Redraw the table to update column visibility
-    leaderboardTable.columns.adjust().draw();
-  });
-  
-  // Handle checkbox changes for custom view
-  $('.toggle-col').on('change', function() {
-    const columnIdx = parseInt($(this).data('column'));
-    leaderboardTable.column(columnIdx).visible($(this).prop('checked'));
-    leaderboardTable.columns.adjust().draw();
-  });
-  
-  // Trigger click on Overall tab to set initial view
-  $('#category-tabs li[data-view="overall"]').click();
-});
-</script>
+        // Attempt to load JSON data and update the table if successful
+        fetch('static/data/leaderboard.json')
+          .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok for leaderboard.json');
+            return response.json();
+          })
+          .then(jsonData => {
+            console.log("Successfully loaded leaderboard.json, updating table.");
+            leaderboardTable.clear().rows.add(jsonData.data).draw();
+            // highlightBestScores will be called by drawCallback
+          })
+          .catch(error => {
+            console.warn("Could not load leaderboard.json, using embedded data. Error:", error);
+            // Embedded data is already loaded, so no action needed here other than ensuring highlights are correct.
+            highlightBestScores(); // Explicitly call if draw() wasn't triggered by JSON load error path.
+          });
+
+      } catch (error) {
+        console.error("Fatal error during leaderboard initialization:", error);
+      }
+    });
+  </script>
 </body>
 
 </html>
