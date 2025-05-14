@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, keywords, viewport -->
@@ -33,48 +32,18 @@
   <!-- DataTables Bulma integration CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bulma.min.css">
 
-  <!-- Leaderboard Styles -->
+  <!-- --- Leaderboard Styles --- -->
   <style>
-    /* Leaderboard styling */
-    #leaderboard thead th {
-      position: sticky;
-      top: 0;
-      background-color: #f5f5f5;
-      z-index: 1;
+    #leaderboard thead th{
+      position:sticky;top:0;z-index:1;background:#f5f5f5;
     }
-    
     .dataTables_wrapper .dataTables_info,
-    .dataTables_wrapper .dataTables_paginate {
-      margin-top: 1rem;
-    }
-    
-    /* Highlight the highest score in each column */
-    td.highlight {
-      font-weight: bold;
-      background-color: rgba(72, 199, 142, 0.1) !important;
-    }
-    
-    /* Better tab styling */
-    .tabs li.is-active {
-      font-weight: bold;
-    }
-    
-    /* Custom checkbox styling */
-    .control {
-      margin: 0.4rem;
-    }
-    
-    .checkbox {
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-      background-color: #f5f5f5;
-      display: inline-block;
-      transition: all 0.2s;
-    }
-    
-    .checkbox:hover {
-      background-color: #e8e8e8;
-    }
+    .dataTables_wrapper .dataTables_paginate{margin-top:1rem;}
+    td.highlight{font-weight:bold;background:rgba(72,199,142,0.1)!important;}
+    .tabs li.is-active{font-weight:bold;}
+    .control{margin:0.4rem;}
+    .checkbox{padding:0.5rem 0.75rem;border-radius:4px;background:#f5f5f5;display:inline-block;transition:all .2s;}
+    .checkbox:hover{background:#e8e8e8;}
   </style>
 
   <!-- jQuery & other scripts -->
@@ -91,608 +60,282 @@
 </head>
 
 <body>
-
-  <!-- ===== Hero / Header ===== -->
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">AgReason: A Benchmark for Agricultural Reasoning</h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-              </span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">Iowa State University<br>Conference Name and Year</span>
-              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-            </div>
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                  class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/baskargroup/Ag_reasoning" target="_blank"
-                  class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Dataset -->
-              <span class="link-block">
-                <a href="https://your-dataset-url.com" target="_blank" class="button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-database"></i></span>
-                  <span>Dataset</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Teaser / Banner (SVG) ===== -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="static/images/ag_question_categories_fixed2.svg"
-          alt="A conceptual overview of categorized agricultural question types" style="width:100%; height:auto;">
-        <h2 class="subtitle has-text-centered">
-          A conceptual overview of categorized agricultural question types.
-        </h2>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Abstract ===== -->
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              We introduce <strong>AgReason</strong>, a domain-specific benchmark that probes how well large language
-              models (LLMs) perform on agronomy—an area where general-purpose QA tests provide little insight.
-            </p>
-            <ul>
-              <li>
-                <em>AgThoughts Dataset</em> — 44.4K expert-seeded questions whose answers and step-by-step traces were
-                produced by state-of-the-art reasoning LLMs and automatically screened for correctness.
-              </li>
-              <li>
-                <em>AgReason Benchmark</em> — a 100-item gold set covering 10 agronomic categories, validated by domain
-                experts and using an LLM-as-judge for head-to-head evaluation of model performance.
-              </li>
-              <li>
-                <em>AgThinker-8B</em> — a Phi3 8B model fine-tuned on our dataset that improves exact-match accuracy by
-                10 percentage points over instruction-tuned baselines and narrows the gap to expert agronomists.
-              </li>
-            </ul>
-            <p>
-              Experiments on fifteen open and proprietary models confirm that reasoning-centric architectures
-              consistently outperform traditional counterparts, yet still stumble in some areas. AgReason thus offers
-              both a focused yardstick and a training resource for future agricultural AI.
-            </p>
-            <p>
-              For more details, please visit our project page:
-              <a href="https://baskargroup.github.io/Ag_reasoning/" target="_blank" rel="noopener">AgReason Leader
-                Board</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- ===== Improved Leaderboard Section ===== -->
-<section class="section" id="leaderboard-section">
+<!-- ===== Hero / Header ===== -->
+<section class="hero">
+ <div class="hero-body">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Model Performance Leaderboard</h2>
-    
-    <!-- Category Filter Tabs -->
-    <div class="tabs is-centered is-boxed" id="category-tabs">
-      <ul>
-        <li data-view="abiotic"><a>Abiotic Factors</a></li>
-        <li data-view="biotic"><a>Biotic Factors</a></li>
-        <li data-view="crop"><a>Crop</a></li>
-        <li data-view="management"><a>Management</a></li>
-        <li class="is-active" data-view="custom"><a>Custom View</a></li>
-      </ul>
-    </div>
-    
-    <!-- Custom View Options (initially hidden) -->
-    <div id="custom-view-options" style="display: none;" class="mb-4">
-      <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap is-justify-content-center">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="1" checked>
-            Harvest Quality
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="2" checked>
-            In-Season Nutrients
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="3" checked>
-            Soil
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="4" checked>
-            Weather
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="5" checked>
-            Diseases
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="6" checked>
-            Insects
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="7" checked>
-            Weeds
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="8" checked>
-            Cover Crop
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="9" checked>
-            Crop
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="10" checked>
-            Management
-          </label>
-        </div>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" class="toggle-col" data-column="11" checked>
-            Overall
-          </label>
-        </div>
+   <div class="columns is-centered">
+    <div class="column has-text-centered">
+      <h1 class="title is-1 publication-title">AgReason: A Benchmark for Agricultural Reasoning</h1>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block"><a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+        <span class="author-block"><a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+        <span class="author-block"><a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a></span>
+      </div>
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">Iowa State University<br>Conference Name and Year</span>
+        <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+      </div>
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://github.com/AIIRA-ISU/AgReason" target="_blank" class="button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank" class="button is-normal is-rounded is-dark">
+            <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://huggingface.co/datasets/BGLab/AgThoughts" target="_blank" class="button is-normal is-rounded is-dark">
+            <span class="icon"><i class="fas fa-database"></i></span><span>Dataset</span>
+          </a>
+        </span>
       </div>
     </div>
+   </div>
+  </div>
+ </div>
+</section>
 
-    <!-- Table wrapper with shadow and rounded corners -->
-    <div class="box table-container">
-      <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Harvest Quality</th>
-            <th>In-Season Nutrients</th>
-            <th>Soil</th>
-            <th>Weather</th>
-            <th>Diseases</th>
-            <th>Insects</th>
-            <th>Weeds</th>
-            <th>Cover Crop</th>
-            <th>Crop</th>
-            <th>Management</th>
-            <th>Overall</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-    
-    <div class="content is-small has-text-centered mt-3">
-      <p>Click on column headers to sort. Use the tabs above to switch between predefined views or create a custom view.</p>
+<!-- ===== Teaser / Banner ===== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/ag_question_categories_fixed2.svg"
+           alt="A conceptual overview of categorized agricultural question types"
+           style="width:100%;height:auto;">
+      <h2 class="subtitle has-text-centered">A conceptual overview of categorized agricultural question types.</h2>
     </div>
   </div>
 </section>
 
-  <!-- ===== BibTeX ===== -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-@misc{Label Studio,
+<!-- ===== Abstract ===== -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Agricultural decision-making involves complex, context-specific reasoning, where choices about crops, practices, and interventions depend heavily on geographic, climatic, and economic conditions. Traditional large language models (LLMs) often fall short in navigating this nuanced problem due to limited reasoning capacity.
+          </p>
+          <p>
+            We hypothesize that recent advances in large reasoning models (LRMs) can better handle such structured, domain-specific inference. To investigate this, we introduce <strong>AgReason</strong>, the first expert-curated open-ended science benchmark with 100 questions for agricultural reasoning.
+          </p>
+          <p>
+            Evaluations across fifteen open-source and proprietary models reveal that LRMs outperform conventional ones, though notable challenges persist, with the strongest Gemini–based baseline achieving 36% accuracy.
+          </p>
+          <p>
+            We also present <strong>AgThoughts</strong>, a large-scale dataset of 44.6K question-answer pairs generated with human oversight and equipped with synthetically generated reasoning traces.
+          </p>
+          <p>
+            Using AgThoughts, we develop <strong>AgThinker</strong>, a suite of small reasoning models that can be run on consumer-grade GPUs, and show that our dataset can be effective in unlocking agricultural reasoning abilities in LLMs.
+          </p>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Leaderboard ===== -->
+<section class="section" id="leaderboard-section">
+ <div class="container is-max-desktop">
+  <h2 class="title is-3 has-text-centered">Model Performance Leaderboard</h2>
+
+  <!-- Category Filter Tabs -->
+  <div class="tabs is-centered is-boxed" id="category-tabs">
+    <ul>
+      <li data-view="abiotic"><a>Abiotic Factors</a></li>
+      <li data-view="biotic"><a>Biotic Factors</a></li>
+      <li data-view="crop"><a>Crop‑Related</a></li>
+      <li data-view="management"><a>Crop Inputs</a></li>
+      <li class="is-active" data-view="custom"><a>Custom View</a></li>
+    </ul>
+  </div>
+
+  <!-- Custom View Options -->
+  <div id="custom-view-options" style="display:none;" class="mb-4">
+    <div class="field is-grouped is-grouped-multiline is-flex-wrap-wrap is-justify-content-center">
+      <!-- check‑boxes correspond to column indices 1‑10 (Overall is 11) -->
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="1" checked>Abiotic Harvest Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="2" checked>Plant &amp; Seed Health Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="3" checked>Abiotic Soil Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="4" checked>Abiotic Weather Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="5" checked>Biotic Diseases Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="6" checked>Biotic Insects Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="7" checked>Biotic Weeds Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="8" checked>Cover Crop Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="9" checked>Crop Management Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="10" checked>Crop Inputs Qs</label></div>
+      <div class="control"><label class="checkbox"><input type="checkbox" class="toggle-col" data-column="11" checked>Overall</label></div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="box table-container">
+    <table id="leaderboard" class="table is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Abiotic Harvest Qs</th>
+          <th>Plant &amp; Seed Health Qs</th>
+          <th>Abiotic Soil Qs</th>
+          <th>Abiotic Weather Qs</th>
+          <th>Biotic Diseases Qs</th>
+          <th>Biotic Insects Qs</th>
+          <th>Biotic Weeds Qs</th>
+          <th>Cover Crop Qs</th>
+          <th>Crop Management Qs</th>
+          <th>Crop Inputs Qs</th>
+          <th>Overall</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="content is-small has-text-centered mt-3">
+    <p>Click on column headers to sort. Use the tabs above to switch between predefined views or create a custom one.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ===== BibTeX ===== -->
+<section class="section" id="BibTeX">
+ <div class="container is-max-desktop content">
+  <h2 class="title">BibTeX</h2>
+  <pre><code>@misc{Label Studio,
   title={{Label Studio}: Data labeling software},
   url={https://github.com/HumanSignal/label-studio},
   note={Open source software available from https://github.com/HumanSignal/label-studio},
   author={Maxim Tkachenko and Mikhail Malyuk and Andrey Holmanyuk and Nikolai Liubimov},
-  year={2020-2025},
-}
-      </code></pre>
-    </div>
-  </section>
+  year={2020-2025},}</code></pre>
+ </div>
+</section>
 
-  <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8 has-text-centered">
-          <p>
-            This page was built using the
-            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">
-              Academic Project Page Template
-            </a>,
-            adopted from the
-            <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            Licensed under
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-              Creative Commons Attribution-ShareAlike 4.0 International License
-            </a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+<!-- ===== Footer ===== -->
+<footer class="footer">
+ <div class="container">
+  <div class="columns is-centered">
+   <div class="column is-8 has-text-centered">
+     <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>, adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution‑ShareAlike 4.0 International License</a>.</p>
+   </div>
+  </div>
+ </div>
+</footer>
 
-  <!-- Leaderboard initialization script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log("DOM fully loaded and parsed");
+<!-- ===== Leaderboard JS ===== -->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  let leaderboardTable;
 
-      let leaderboardTable;
+  // ---------- YOUR NEW DATA ----------
+  const tableData = {
+    "data":[
+      {"model":"QwQ-32B","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0.2,"AbioticWeatherQs":0.2,"BioticDiseasesQs":0.1,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0,"CropManagementQs":0,"CropInputsQs":0,"Overall":0.05},
+      {"model":"DeepSeek V3","AbioticHarvestQs":0.2,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0.1,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0.1,"CoverCropQs":0.1,"CropManagementQs":0.1,"CropInputsQs":0.1,"Overall":0.07},
+      {"model":"Gemini 2.5 Flash","AbioticHarvestQs":0.4,"PlantSeedHealthQs":0.2,"AbioticSoilQs":0.5,"AbioticWeatherQs":0.4,"BioticDiseasesQs":0.8,"BioticInsectsQs":0.4,"BioticWeedsQs":0.2,"CoverCropQs":0.2,"CropManagementQs":0.2,"CropInputsQs":0.3,"Overall":0.36},
+      {"model":"GPT‑4o","AbioticHarvestQs":0.1,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0.1,"BioticDiseasesQs":0,"BioticInsectsQs":0.1,"BioticWeedsQs":0.1,"CoverCropQs":0,"CropManagementQs":0.1,"CropInputsQs":0,"Overall":0.05},
+      {"model":"gpto1","AbioticHarvestQs":0.7,"PlantSeedHealthQs":0.1,"AbioticSoilQs":0.3,"AbioticWeatherQs":0.3,"BioticDiseasesQs":0.2,"BioticInsectsQs":0.1,"BioticWeedsQs":0,"CoverCropQs":0,"CropManagementQs":0.3,"CropInputsQs":0,"Overall":0.2},
+      {"model":"Grok‑2","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0.1,"CoverCropQs":0,"CropManagementQs":0.2,"CropInputsQs":0,"Overall":0.03},
+      {"model":"Grok‑3 Beta","AbioticHarvestQs":0.6,"PlantSeedHealthQs":0,"AbioticSoilQs":0.4,"AbioticWeatherQs":0.1,"BioticDiseasesQs":0.3,"BioticInsectsQs":0.2,"BioticWeedsQs":0,"CoverCropQs":0.1,"CropManagementQs":0.2,"CropInputsQs":0.3,"Overall":0.22},
+      {"model":"LLaMA‑4 Maverick","AbioticHarvestQs":0,"PlantSeedHealthQs":0.1,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0.1,"CropManagementQs":0.2,"CropInputsQs":0,"Overall":0.04},
+      {"model":"LLaMA‑4 Scout","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0.1,"CoverCropQs":0,"CropManagementQs":0,"CropInputsQs":0,"Overall":0.01},
+      {"model":"Mistral 24B","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0,"CropManagementQs":0,"CropInputsQs":0,"Overall":0},
+      {"model":"mistral_7b","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0,"CropManagementQs":0,"CropInputsQs":0,"Overall":0},
+      {"model":"Mistral 7B (SFT)","AbioticHarvestQs":0.1,"PlantSeedHealthQs":0,"AbioticSoilQs":0.1,"AbioticWeatherQs":0.1,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0,"CropManagementQs":0,"CropInputsQs":0,"Overall":0.03},
+      {"model":"phi3","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0,"AbioticWeatherQs":0,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0,"CoverCropQs":0.1,"CropManagementQs":0,"CropInputsQs":0,"Overall":0.01},
+      {"model":"Phi‑3 (SFT)","AbioticHarvestQs":0,"PlantSeedHealthQs":0,"AbioticSoilQs":0.1,"AbioticWeatherQs":0.1,"BioticDiseasesQs":0,"BioticInsectsQs":0,"BioticWeedsQs":0.1,"CoverCropQs":0,"CropManagementQs":0.1,"CropInputsQs":0.1,"Overall":0.05}
+    ]
+  };
 
-      const tableData = {
-        "data": [
-          {
-            "model": "QwQ-32B",
-            "AbioticQuestions_HarvestQuality": 0.142857,
-            "AbioticQuestions_InSeason_Nutrients": 0.333333,
-            "AbioticQuestions_Soil": 0.2,
-            "AbioticQuestions_Weather": 0.166667,
-            "BioticQuestions_Diseases": 0.285714,
-            "BioticQuestions_Insects": 0.0666667,
-            "BioticQuestions_Weeds": 0.0714286,
-            "CropQuestions_CoverCrop": 0.0833333,
-            "CropQuestions_Crop": 0.307692,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.165769
-          },
-          {
-            "model": "claude_3.7_sonnet",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0,
-            "CropQuestions_CoverCrop": 0,
-            "CropQuestions_Crop": 0,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0
-          },
-          {
-            "model": "claude_3_opus",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0.0833333,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0,
-            "CropQuestions_CoverCrop": 0,
-            "CropQuestions_Crop": 0.0769231,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0160256
-          },
-          {
-            "model": "deepseek_v3",
-            "AbioticQuestions_HarvestQuality": 0.142857,
-            "AbioticQuestions_InSeason_Nutrients": 0.133333,
-            "AbioticQuestions_Soil": 0.0666667,
-            "AbioticQuestions_Weather": 0.166667, 
-            "BioticQuestions_Diseases": 0.0714286,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0,
-            "CropQuestions_CoverCrop": 0.166667,
-            "CropQuestions_Crop": 0.0769231,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0824542
-          },
-          {
-            "model": "gemini2.5-flash",
-            "AbioticQuestions_HarvestQuality": 0.857143,
-            "AbioticQuestions_InSeason_Nutrients": 0.533333,
-            "AbioticQuestions_Soil": 0.733333,
-            "AbioticQuestions_Weather": 0.75,
-            "BioticQuestions_Diseases": 0.714286,
-            "BioticQuestions_Insects": 0.733333,
-            "BioticQuestions_Weeds": 0.571429,
-            "CropQuestions_CoverCrop": 0.416667,
-            "CropQuestions_Crop": 0.615385,
-            "ManagementQuestions_Management": 0.882353,
-            "Overall": 0.680726
-          },
-          {
-            "model": "gpt4o",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0.0833333,
-            "BioticQuestions_Diseases": 0.0714286,
-            "BioticQuestions_Insects": 0.0666667,
-            "BioticQuestions_Weeds": 0.142857,
-            "CropQuestions_CoverCrop": 0,
-            "CropQuestions_Crop": 0,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0364286
-          },
-          {
-            "model": "gpto1",
-            "AbioticQuestions_HarvestQuality": 0.642857,
-            "AbioticQuestions_InSeason_Nutrients": 0.4,
-            "AbioticQuestions_Soil": 0.2,
-            "AbioticQuestions_Weather": 0.333333,
-            "BioticQuestions_Diseases": 0.571429,
-            "BioticQuestions_Insects": 0.466667,
-            "BioticQuestions_Weeds": 0.357143,
-            "CropQuestions_CoverCrop": 0.333333,
-            "CropQuestions_Crop": 0.307692,
-            "ManagementQuestions_Management": 0.235294,
-            "Overall": 0.384775
-          },
-          {
-            "model": "grok-2",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0,
-            "BioticQuestions_Diseases": 0.0714286,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0.0714286,
-            "CropQuestions_CoverCrop": 0.25,
-            "CropQuestions_Crop": 0.230769,
-            "ManagementQuestions_Management": 0.117647,
-            "Overall": 0.080794
-          },
-          {
-            "model": "grok-3-beta",
-            "AbioticQuestions_HarvestQuality": 0.5,
-            "AbioticQuestions_InSeason_Nutrients": 0.666667,
-            "AbioticQuestions_Soil": 0.4,
-            "AbioticQuestions_Weather": 0.5,
-            "BioticQuestions_Diseases": 0.714286,
-            "BioticQuestions_Insects": 0.6,
-            "BioticQuestions_Weeds": 0.428571,
-            "CropQuestions_CoverCrop": 0.333333,
-            "CropQuestions_Crop": 0.615385,
-            "ManagementQuestions_Management": 0.588235,
-            "Overall": 0.534648
-          },
-          {
-            "model": "llama4_maverick",
-            "AbioticQuestions_HarvestQuality": 0.0714286,
-            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0.166667,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0.0714286,
-            "CropQuestions_CoverCrop": 0.166667,
-            "CropQuestions_Crop": 0.230769,
-            "ManagementQuestions_Management": 0.117647,
-            "Overall": 0.0891273
-          },
-          {
-            "model": "llama4_scout",
-            "AbioticQuestions_HarvestQuality": 0.0714286,
-            "AbioticQuestions_InSeason_Nutrients": 0.133333,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0,
-            "BioticQuestions_Diseases": 0.0714286,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0,
-            "CropQuestions_CoverCrop": 0,
-            "CropQuestions_Crop": 0.153846,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0430037
-          },
-          {
-            "model": "mistral_24B",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0.0666667,
-            "AbioticQuestions_Soil": 0.0666667,
-            "AbioticQuestions_Weather": 0,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0.0666667,
-            "BioticQuestions_Weeds": 0.0714286,
-            "CropQuestions_CoverCrop": 0,
-            "CropQuestions_Crop": 0.153846,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0425275
-          },
-          {
-            "model": "phi3",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0,
-            "AbioticQuestions_Soil": 0,
-            "AbioticQuestions_Weather": 0,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0,
-            "BioticQuestions_Weeds": 0,
-            "CropQuestions_CoverCrop": 0.0833333,
-            "CropQuestions_Crop": 0.0769231,
-            "ManagementQuestions_Management": 0,
-            "Overall": 0.0160256
-          },
-          {
-            "model": "phi3_sft",
-            "AbioticQuestions_HarvestQuality": 0,
-            "AbioticQuestions_InSeason_Nutrients": 0,
-            "AbioticQuestions_Soil": 0.2,
-            "AbioticQuestions_Weather": 0.0833333,
-            "BioticQuestions_Diseases": 0,
-            "BioticQuestions_Insects": 0.133333,
-            "BioticQuestions_Weeds": 0.142857,
-            "CropQuestions_CoverCrop": 0.166667,
-            "CropQuestions_Crop": 0.153846,
-            "ManagementQuestions_Management": 0.0588235,
-            "Overall": 0.093886
-          }
-        ]
-      };
-
-      function highlightBestScores() {
-        if (!leaderboardTable) return;
-        for (let i = 1; i <= 11; i++) { // Iterate through score columns (1 to 11)
-          let maxVal = -Infinity;
-          let maxIdx = -1;
-          leaderboardTable.column(i, { search: 'applied' }).data().each(function (value, index) {
-            const numValue = parseFloat(value); // Ensure numeric comparison
-            if (numValue > maxVal) {
-              maxVal = numValue;
-              maxIdx = index;
-            }
-          });
-          $(leaderboardTable.column(i).nodes()).removeClass('highlight');
-          if (maxIdx !== -1) {
-            $(leaderboardTable.column(i).nodes()[maxIdx]).addClass('highlight');
-          }
-        }
+  function highlightBestScores(){
+    if(!leaderboardTable) return;
+    for(let i=1;i<=10;i++){
+      let maxVal=-Infinity,maxIdx=-1;
+      leaderboardTable.column(i,{search:'applied'}).data().each((val,idx)=>{
+        const v=parseFloat(val);
+        if(v>maxVal){maxVal=v;maxIdx=idx;}
+      });
+      $(leaderboardTable.column(i).nodes()).removeClass('highlight');
+      if(maxIdx!==-1){
+        $(leaderboardTable.column(i).nodes()[maxIdx]).addClass('highlight');
       }
+    }
+  }
 
-      try {
-        console.log("Initializing DataTable with embedded data.");
-        leaderboardTable = $('#leaderboard').DataTable({
-          data: tableData.data,
-          columns: [
-            { data: 'model', title: 'Model' },
-            { data: 'AbioticQuestions_HarvestQuality', title: 'Harvest Quality', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'AbioticQuestions_InSeason_Nutrients', title: 'In-Season Nutrients', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'AbioticQuestions_Soil', title: 'Soil', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'AbioticQuestions_Weather', title: 'Weather', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'BioticQuestions_Diseases', title: 'Diseases', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'BioticQuestions_Insects', title: 'Insects', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'BioticQuestions_Weeds', title: 'Weeds', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'CropQuestions_CoverCrop', title: 'Cover Crop', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'CropQuestions_Crop', title: 'Crop', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'ManagementQuestions_Management', title: 'Management', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' },
-            { data: 'Overall', title: 'Overall', render: data => data !== undefined ? (data * 100).toFixed(2) + '%' : 'N/A' }
-          ],
-          order: [[11, 'desc']],
-          pageLength: 10,
-          lengthChange: false,
-          responsive: true,
-          drawCallback: function() {
-            console.log("Table redrawn, calling highlightBestScores.");
-            highlightBestScores();
-          }
-        });
-        console.log("DataTable initialized.");
+  // Initialise DataTable
+  leaderboardTable = $('#leaderboard').DataTable({
+    data: tableData.data,
+    columns:[
+      {data:'model',title:'Model'},
+      {data:'AbioticHarvestQs',title:'Abiotic Harvest Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'PlantSeedHealthQs',title:'Plant & Seed Health Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'AbioticSoilQs',title:'Abiotic Soil Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'AbioticWeatherQs',title:'Abiotic Weather Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'BioticDiseasesQs',title:'Biotic Diseases Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'BioticInsectsQs',title:'Biotic Insects Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'BioticWeedsQs',title:'Biotic Weeds Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'CoverCropQs',title:'Cover Crop Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'CropManagementQs',title:'Crop Management Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'CropInputsQs',title:'Crop Inputs Qs',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'},
+      {data:'Overall',title:'Overall',render:d=>d!==undefined?(d*100).toFixed(2)+'%':'N/A'}
+    ],
+    order:[[11,'desc']],
+    pageLength:10,
+    lengthChange:false,
+    responsive:true,
+    drawCallback:highlightBestScores
+  });
 
-        // Tab switching logic
-        $('#category-tabs li a').on('click', function(e) {
-          e.preventDefault();
-          console.log("Tab clicked: ", $(this).parent().data('view'));
+  // ----- Tab switching -----
+  $('#category-tabs li a').on('click',function(e){
+    e.preventDefault();
+    $('#category-tabs li').removeClass('is-active');
+    $(this).parent().addClass('is-active');
 
-          $('#category-tabs li').removeClass('is-active');
-          $(this).parent().addClass('is-active');
+    const view = $(this).parent().data('view');
+    const customOpts = $('#custom-view-options');
 
-          const view = $(this).parent().data('view');
-          const customViewOptions = $('#custom-view-options');
+    // hide all category columns, keep Model+Overall
+    for(let i=1;i<=10;i++){leaderboardTable.column(i).visible(false);}
+    leaderboardTable.column(0).visible(true);
+    leaderboardTable.column(11).visible(true);
+    customOpts.hide();
 
-          // Default: hide all score columns (1 to 10), always show Model (0) and Overall (11)
-          for (let i = 1; i <= 10; i++) {
-            leaderboardTable.column(i).visible(false);
-          }
-          leaderboardTable.column(0).visible(true); // Model
-          leaderboardTable.column(11).visible(true); // Overall score column initially visible
+    if(view==='abiotic'){[1,2,3,4].forEach(i=>leaderboardTable.column(i).visible(true));}
+    else if(view==='biotic'){[5,6,7].forEach(i=>leaderboardTable.column(i).visible(true));}
+    else if(view==='crop'){[8,9].forEach(i=>leaderboardTable.column(i).visible(true));}
+    else if(view==='management'){leaderboardTable.column(10).visible(true);}
+    else if(view==='custom'){
+      customOpts.show();
+      $('.toggle-col').each(function(){
+        const col=parseInt($(this).data('column'));
+        leaderboardTable.column(col).visible($(this).prop('checked'));
+      });
+    }
 
-          customViewOptions.hide();
+    leaderboardTable.columns.adjust().responsive.recalc().draw();
+  });
 
-          if (view === 'abiotic') {
-            [1, 2, 3, 4].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
-          } else if (view === 'biotic') {
-            [5, 6, 7].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
-          } else if (view === 'crop') {
-            [8, 9].forEach(colIdx => leaderboardTable.column(colIdx).visible(true));
-          } else if (view === 'management') {
-            leaderboardTable.column(10).visible(true);
-          } else if (view === 'custom') {
-            customViewOptions.show();
-            // For custom view, column visibility is determined by checkboxes.
-            // The Overall score column (11) is also controlled by its checkbox.
-            $('.toggle-col').each(function() {
-                const colIdx = parseInt($(this).data('column'));
-                leaderboardTable.column(colIdx).visible($(this).prop('checked'));
-            });
-          } 
-          // Removed 'else if (view === \'overall\')' block as the tab is deleted.
-          // The default setup above handles initial state for other views before specific columns are shown.
+  // Check‑box toggles in custom view
+  $('.toggle-col').on('change',function(){
+    const col=parseInt($(this).data('column'));
+    leaderboardTable.column(col).visible($(this).prop('checked'));
+    leaderboardTable.columns.adjust().responsive.recalc().draw();
+  });
 
-          leaderboardTable.columns.adjust().responsive.recalc().draw();
-          console.log("Columns adjusted and table redrawn for view: ", view);
-        });
-
-        // Checkbox change handler for custom view
-        $('.toggle-col').on('change', function() {
-          if (!leaderboardTable) return;
-          const colIdx = parseInt($(this).data('column'));
-          leaderboardTable.column(colIdx).visible($(this).prop('checked'));
-          leaderboardTable.columns.adjust().responsive.recalc().draw();
-           console.log(`Custom view: Column ${colIdx} visibility changed to ${$(this).prop('checked')}`);
-        });
-
-        // Initial view setup: Click the "Custom" tab by default
-        console.log("Setting initial view to 'custom'.");
-        $('#category-tabs li[data-view="custom"] a').click();
-        
-        // Attempt to load JSON data and update the table if successful
-        fetch('static/data/leaderboard.json')
-          .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok for leaderboard.json');
-            return response.json();
-          })
-          .then(jsonData => {
-            console.log("Successfully loaded leaderboard.json, updating table.");
-            leaderboardTable.clear().rows.add(jsonData.data).draw();
-            // highlightBestScores will be called by drawCallback
-          })
-          .catch(error => {
-            console.warn("Could not load leaderboard.json, using embedded data. Error:", error);
-            // Embedded data is already loaded, so no action needed here other than ensuring highlights are correct.
-            highlightBestScores(); // Explicitly call if draw() wasn't triggered by JSON load error path.
-          });
-
-      } catch (error) {
-        console.error("Fatal error during leaderboard initialization:", error);
-      }
-    });
-  </script>
+  // Default to Custom tab
+  $('#category-tabs li[data-view="custom"] a').click();
+});
+</script>
 </body>
-
 </html>
