@@ -133,10 +133,20 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/ag_question_categories_fixed2.svg"
-           alt="A conceptual overview of categorized agricultural question types"
-           style="width:100%;height:auto;">
-      <h2 class="subtitle has-text-centered">A conceptual overview of categorized agricultural question types.</h2>
+      <figure style="margin:0;">
+        <img
+          src="static/images/AgReason_Framework.svg"
+          alt="Workflow for the development of AgThoughts and AgReason"
+          style="width:100%; height:auto;"
+        >
+        <figcaption class="subtitle has-text-centered" style="margin-top:1em;">
+          Workflow for the development of <em>AgThoughts</em> and <em>AgReason</em>: 
+          (1) Base templates are expanded into detailed question–answer pairs using LLMs; 
+          (2) Expert feedback on 200 sampled examples identifies common issues; 
+          (3) Expert and LLM-based feedback is used to iteratively filter and finalize 44.6k Q&amp;A pairs; 
+          (4) The <em>AgReason</em> Benchmark evaluates candidate LLM performance using 100 questions with expert-curated gold-standard answers using LLM-as-judge.
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
